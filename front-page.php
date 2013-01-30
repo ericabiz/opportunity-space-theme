@@ -1,16 +1,23 @@
 <?php get_header(); ?>
 
-    <section class="hero">
+<section class="hero">
+    <div class="wrap">
         <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("hero") ) : endif ?>
-    </section><!-- .hero -->
+    </div>
+    <div class="clearboth"></div>
+</section><!-- .hero -->
 
-    <section class="main">
+<div class="wrap">
+    <section class="content-area" role="main">
+
+        <section class="features">
+            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("features") ) : endif ?>
+        </section><!-- .features -->
 
         <?php the_post(); ?>
-
-
         <?php the_content(); ?>
 
-    </section><!-- .main -->
+        <hr />
+    </section><!-- .content-area -->
 
 <?php get_footer(); ?>

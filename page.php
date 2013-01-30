@@ -1,8 +1,13 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: brianfryer
- * Date: 1/28/13
- * Time: 3:57 PM
- * To change this template use File | Settings | File Templates.
- */
+<?php get_header(); ?>
+
+<div class="wrap">
+    <section class="content-area" role="main">
+
+        <?php the_post(); ?>
+        <h1 class="post-title"><?php the_title(); ?></h1>
+        <?php the_content(); ?>
+
+        <hr />
+    </section><!-- .content-area -->
+
+<?php get_footer(); ?>

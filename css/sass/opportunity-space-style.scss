@@ -1,33 +1,330 @@
+//$max-width: 1140px;
+
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 @import 'normalize';
+
+/* Colors! */
+
+$orange: #E0A24B;
 
 /* ==========================================================================
    Top Level Elements
    ========================================================================== */
 
 body {
-  @extend .font2;
+  @extend %font2;
+  color: #222;
+  line-height: 1.6;
+  background-color: #f2f2f2;
+  @include background-image(url("/wp-content/themes/opportunity-space-theme/img/gray_jean.png"));
 }
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %font1;
+}
+
+a {
+  color: $orange;
+
+  &.btn {
+    @extend .btn;
+  }
+}
+
+hr {
+  @extend .clearboth;
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
 
 /* ==========================================================================
    Structural Elements
    ========================================================================== */
 
+.wrap {
+  @include outer-container;
+}
+
+#header {
+
+  .wrap {
+
+  }
+  .widget-area {
+    @include span-columns(6);
+  }
+}
+
+#title-area {
+  @include span-columns(6);
+}
+
+.content-area {
+  position: relative;
+  z-index: 2;
+  @include pad(40px);
+  border-top: 2px solid $orange;
+  background-color: #fff;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    margin: 1em 0 -0.3em;
+  }
+  img {
+    padding: 2px;
+    border: 1px solid #ccc;
+  }
+}
+
+.site-footer {
+  @include span-columns(12);
+  @include row(table);
+  margin-bottom: 40px;
+  color: #fff;
+  background-color: #222;
+  text-align: center;
+
+  hr {
+    border-top: 1px dotted tint(shade($orange, 80%), 20%);
+  }
+  .widget {
+    @include span-columns(4, table);
+    @include pad(20px 40px);
+
+    h3 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      color: tint(shade($orange, 80%), 40%);
+      font-size: 1.4em;
+      font-weight: normal;
+      border-bottom: 1px dotted tint(shade($orange, 80%), 20%);
+    }
+  }
+  .wpgmza_map {
+    border: 1px solid tint(shade($orange, 80%), 20%);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================================================
+   Navigation Elements
+   ========================================================================== */
+
+%nav-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    line-height: 1;
+  }
+}
+
+.menu-primary-nav-container {
+
+}
+
+#menu-primary-nav {
+  @extend %nav-menu;
+  @extend .floatright;
+  @include row(table);
+  position: relative;
+  left: 1px;
+  text-align: center;
+
+  > li {
+    @include inline-block;
+    //@include span-columns(3, table);
+    //@include omega(table);
+
+    > a {
+      @include inline-block;
+      @include pad(40px 20px);
+      width: 100%;
+      color: #666;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #fff
+      }
+    }
+    &.current_page_item {
+      text-shadow: 0 1px 1px shade($orange, 40%);
+
+      > a {
+        color: #fff;
+        font-weight: bold;
+        background-color: $orange;
+      }
+      span {
+        color: #fff;
+      }
+    }
+    &:last-child {
+
+      span {
+        @include pad(3px 6px);
+        border-radius: 2px;
+      }
+    }
+  }
+}
 
 
 /* ==========================================================================
    Class Level Elements
    ========================================================================== */
 
-.font1 {
-  font-family: 'Brevia', sans-serif;
+%font1 {
+   font-family: 'utopia-std-display', serif;
 }
-.font2 {
-  font-family: 'utopia-std-display', 'serif';
+%font2 {
+  font-family: 'museo-sans', sans-serif;
 }
+
+.floatleft {
+  float: left;
+}
+.floatright {
+  float: right;
+}
+.clearboth {
+  clear: both;
+}
+.displaynone {
+  display: none;
+}
+
+.alignleft {
+  @extend .floatleft;
+  margin: 0 20px 20px 0;
+}
+.alignright {
+  @extend .floatright;
+  margin: 0 0 20px 20px;
+}
+
+.large {
+  font-size: 150%;
+}
+
+.highlight {
+  background-color: rgba(255, 244, 87, 0.6);
+}
+
+.btn,
+.button.gform_button {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 18px;
+  background-color: $orange;
+
+  &:hover {
+    text-shadow: 0 1px 1px shade($orange, 40%);
+    background-color: tint($orange, 10%);
+    //box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.post-title {
+  margin: -8px 0 20px;
+  color: #A5A5A5;
+  font-size: 2.8em;
+  letter-spacing: -2px;
+  line-height: 1;
+  font-weight: normal;
+}
+
 
 /* ==========================================================================
    "ID" Level Elements
    ========================================================================== */
 
+#title {
+  @extend %font1;
+  position: relative;
+  top: 26px;
+  margin: 0;
+
+  font-size: 2.8em;
+  font-weight: normal;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  > a {
+
+    text-decoration: none;
+    //text-shadow: 0 -1px 0 shade($orange, 35%);
+
+    &:hover {
+      color: tint($orange, 20%);
+    }
+  }
+}
+
+section.hero {
+  @include outer-container;
+  color: #fff;
+  border-top: 3px solid $orange;
+  background-color: #222;
+
+  .textwidget {
+    @include span-columns(6);
+
+    &:last-child {
+      padding: 0 28px 0 0;
+    }
+  }
+  img {
+    width: 100%;
+    border: 1px solid shade($orange, 60%);
+  }
+  h1 {
+    @extend %font2;
+    margin: 24px 0 0;
+    line-height: 1;
+  }
+}
+
+section.features {
+
+  .entry {
+    @include clearfix;
+    margin-bottom: 20px;
+  }
+  h2 {
+    margin: 20px 0 0;
+  }
+  img.alignright {
+    margin-left: 40px;
+    padding: 2px;
+    border: 1px solid #aaa;
+  }
+}
+
+#gform_wrapper_1 {
+  @include span-columns(6);
+  @include omega;
+
+  .gform_heading {
+    @extend .displaynone;
+  }
+}
+
+.social-media {
+  @extend %nav-menu;
+  text-align: center;
+
+  > li {
+    @extend .floatleft;
+    @include span-columns(1.25 of 4);
+  }
+}

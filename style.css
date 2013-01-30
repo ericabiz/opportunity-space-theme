@@ -4,7 +4,10 @@ Theme URI: http://opportunityspace.com/
 Description: A custom theme for Opportunity Space
 Author: Brian Fryer
 Author URI: http://opportunityspace.com/
-Version:
+Version: 1.0
+
+Template: genesis
+Template Version: 1.0
 */
 
 /* All CSS is located in `css/opportunity-space-style.css` */
