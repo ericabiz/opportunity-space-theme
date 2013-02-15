@@ -567,9 +567,16 @@ section.hero {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
+  *zoom: 1;
+  display: table;
   color: #fff;
   border-top: 3px solid #e0a24b;
   background-color: #222; }
+  section.hero:before, section.hero:after {
+    content: " ";
+    display: table; }
+  section.hero:after {
+    clear: both; }
   section.hero:before, section.hero:after {
     content: " ";
     display: table; }
@@ -579,14 +586,22 @@ section.hero {
     display: block;
     float: left;
     margin-right: 2.35765%;
-    width: 48.82117%; }
+    width: 48.82117%;
+    margin-right: 0; }
     section.hero .textwidget:last-child {
       margin-right: 0; }
-    section.hero .textwidget:last-child {
-      padding: 0 28px 0 0; }
+  section.hero .description {
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    padding: 0 0 0 30px; }
+    section.hero .description:last-child {
+      margin-right: 0; }
   section.hero img {
     width: 100%;
-    border: 1px solid #59401e; }
+    border: 1px solid #59401e;
+    border-bottom-color: #222; }
   section.hero h1 {
     margin: 24px 0 0;
     line-height: 1; }

@@ -272,20 +272,23 @@ hr {
 
 section.hero {
   @include outer-container;
+  @include row(table);
   color: #fff;
   border-top: 3px solid $orange;
   background-color: #222;
 
   .textwidget {
     @include span-columns(6);
-
-    &:last-child {
-      padding: 0 28px 0 0;
-    }
+    margin-right: 0;
+  }
+  .description {
+    @include span-columns(6);
+    padding: 0 0 0 30px;
   }
   img {
     width: 100%;
     border: 1px solid shade($orange, 60%);
+    border-bottom-color: #222;
   }
   h1 {
     @extend %font2;
