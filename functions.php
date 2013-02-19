@@ -21,12 +21,16 @@ function script_managment() {
     wp_register_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js' );
     wp_enqueue_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array( 'jquery' ), '4.0', false );
     wp_enqueue_script( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array( 'jquery' ), '1.8.16' );
+    wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/js/jquery.flexslider-min.js', null, null, false );
+    wp_enqueue_script( 'flexslider', get_stylesheet_uri() . '/js/jquery.flexslider-min.js', null, null, false );
+    wp_register_script( 'fittext', get_stylesheet_directory_uri() . '/js/jquery.fittext.js', null, null, false );
+    wp_enqueue_script( 'fittext', get_stylesheet_uri() . '/js/jquery.fittext.js', null, null, false );
 }
 add_action( 'wp_enqueue_scripts', 'script_managment', 99);
 
 // Grab the right stylesheet
 function os_enqueue_stylesheet() {
-    wp_register_style( 'opportunity-space', get_stylesheet_directory_uri() . ('/css/opportunity-space-style.css') );
+    wp_register_style( 'opportunity-space', get_stylesheet_directory_uri() . ('/css/opportunity-space-style.css'), null, null, 'screen' );
     wp_enqueue_style( 'opportunity-space' );
 }
 add_action('genesis_meta', 'os_enqueue_stylesheet');
@@ -37,7 +41,7 @@ add_image_size( 'features-image', 420, 315, false );
 // Allow shortcodes to be used in widgets
 add_filter('widget_text', 'do_shortcode');
 
-// Register 'hero' widget ready area ()
+// Register 'hero' widget ready area
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
         'id'            => 'hero',
@@ -48,7 +52,18 @@ if ( function_exists('register_sidebar') )
         'after_title'   => '</h1>'
     ));
 
-// Register 'features' widget ready area ()
+// Register 'slider' widget ready area
+if ( function_exists('register_sidebar') )
+    register_sidebar(array(
+        'id'            => 'slider',
+        'name'          => 'Homepage Slider',
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '<span style="display: none;"',
+        'after_title'   => '</span>'
+    ));
+
+// Register 'features' widget ready area
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
         'id'            => 'features',
@@ -59,7 +74,7 @@ if ( function_exists('register_sidebar') )
         'after_title'   => '</span>'
     ));
 
-// Register 'footer-widgets' widget ready area ()
+// Register 'footer-widgets' widget ready area
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
         'id'            => 'footer-widgets',

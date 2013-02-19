@@ -1,8 +1,7 @@
-//$max-width: 1140px;
-
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 @import 'normalize';
+@import 'flexslider';
 
 /* Colors! */
 
@@ -46,6 +45,7 @@ hr {
 
 .wrap {
   @include outer-container;
+  @include pad(0 em(30));
 }
 
 #header {
@@ -55,11 +55,20 @@ hr {
   }
   .widget-area {
     @include span-columns(6);
+
+    @include media(max-width 940px) {
+      @include span-columns(12);
+    }
   }
 }
 
 #title-area {
   @include span-columns(6);
+
+  @include media(max-width 940px) {
+    @include span-columns(12);
+    text-align: center;
+  }
 }
 
 .content-area {
@@ -124,7 +133,7 @@ hr {
 }
 
 .menu-primary-nav-container {
-
+  //@include row(table);
 }
 
 #menu-primary-nav {
@@ -135,41 +144,71 @@ hr {
   left: 1px;
   text-align: center;
 
+  @include media(max-width 940px) {
+    @include span-columns(12);
+    @include row(table);
+  }
+
+  @include media(max-width 750px) {
+    display: block;
+  }
+
+  @include media(max-width 500px) {
+
+  }
+
   > li {
     @include inline-block;
-    //@include span-columns(3, table);
-    //@include omega(table);
+
+    @include media(max-width 940px) {
+      @include span-columns(3, table);
+      @include pad(0);
+    }
+
+    @include media(max-width 750px) {
+      @include span-columns(12);
+    }
+
+    @include media(max-width 500px) {
+      float: none;
+      display: block;
+      width: 100%;
+      //@include pad(0);
+    }
 
     > a {
       @include inline-block;
-      @include pad(40px 20px);
+      @include pad(em(40) em(15));
       width: 100%;
       color: #666;
       text-decoration: none;
+      white-space: nowrap;
+      background-color: rgba(0, 0, 0, 0.05);
+
+      @include media(max-width 940px) {
+        //@include span-columns(3, table);
+        @include pad(em(10) 0);
+      }
 
       &:hover {
-        background-color: #fff
+          background-color: #fff
+        }
       }
-    }
-    &.current_page_item {
-      text-shadow: 0 1px 1px shade($orange, 40%);
 
-      > a {
-        color: #fff;
-        font-weight: bold;
-        background-color: $orange;
+      &.current_page_item {
+        > a {
+          color: #222;
+          font-weight: bold;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
       }
-      span {
-        color: #fff;
-      }
-    }
-    &:last-child {
+      &:last-child {
 
-      span {
-        @include pad(3px 6px);
-        border-radius: 2px;
+        span {
+          @include pad(3px 6px);
+          border-radius: 2px;
+        }
       }
-    }
   }
 }
 
@@ -259,7 +298,19 @@ hr {
   line-height: 1;
   text-transform: uppercase;
 
-  > a {
+  @include media(max-width 940px) {
+    top: 0;
+    padding: 10px 0;
+    font-size: 2.4em;
+  }
+  @include media(max-width 440px) {
+    font-size: 2em;
+  }
+  @include media(max-width 360px) {
+    font-size: 1.6em;
+  }
+
+> a {
 
     text-decoration: none;
     //text-shadow: 0 -1px 0 shade($orange, 35%);
@@ -271,11 +322,11 @@ hr {
 }
 
 section.hero {
-  @include outer-container;
   @include row(table);
   color: #fff;
   border-top: 3px solid $orange;
   background-color: #222;
+  box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.4);
 
   .textwidget {
     @include span-columns(6);
@@ -283,7 +334,7 @@ section.hero {
   }
   .description {
     @include span-columns(6);
-    padding: 0 0 0 30px;
+    padding: 0 0 0 em(30);
   }
   img {
     width: 100%;
@@ -293,8 +344,32 @@ section.hero {
   h1 {
     @extend %font2;
     margin: 24px 0 0;
+    font-size: 1.8em;
     line-height: 1;
+
+    @include media(min-width 660px) {
+      white-space: nowrap;
+    }
   }
+
+  @include media(max-width 1100px) {
+    font-size: 90%;
+  }
+    @include media(max-width 940px) {
+    font-size: 85%;
+  }
+  @include media(max-width 940px) {
+    font-size: 100%;
+
+    .textwidget,
+    .description {
+      @include span-columns(12);
+    }
+    .description {
+      @include pad(0 em(30) em(30));
+    }
+  }
+
 }
 
 section.features {
@@ -329,5 +404,45 @@ section.features {
   > li {
     @extend .floatleft;
     @include span-columns(1.25 of 4);
+  }
+}
+
+.flexslider {
+  margin-bottom: 30px;
+
+  img {
+    padding: 0;
+    border: none;
+  }
+}
+
+.flex-viewport {
+  overflow: hidden;
+  position: relative
+}
+
+.slides {
+  width: 2400%;
+  -webkit-transition: 0s;
+  -webkit-transform: translate3d(0px, 0, 0);
+}
+
+#slider {
+
+  .slides {
+    > li {
+      float: left;
+      width: 210px;
+    }
+  }
+}
+
+#carousel {
+
+  .slides {
+    > li {
+      float: left;
+      width: 1000px;
+    }
   }
 }
