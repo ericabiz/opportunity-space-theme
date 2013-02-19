@@ -45,7 +45,7 @@ hr {
 
 .wrap {
   @include outer-container;
-  @include pad(0 em(30));
+  @include pad(0 em(15));
 }
 
 #header {
@@ -307,7 +307,7 @@ hr {
     font-size: 2em;
   }
   @include media(max-width 360px) {
-    font-size: 1.6em;
+    font-size: 1.8em;
   }
 
 > a {

@@ -568,7 +568,7 @@ hr {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1.875em; }
+  padding: 0 0.9375em; }
   .wrap:before, .wrap:after {
     content: " ";
     display: table; }
@@ -828,7 +828,7 @@ body, section.hero h1 {
       font-size: 2em; } }
   @media screen and (max-width: 360px) {
     #title {
-      font-size: 1.6em; } }
+      font-size: 1.8em; } }
   #title > a {
     text-decoration: none; }
     #title > a:hover {

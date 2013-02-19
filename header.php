@@ -8,6 +8,8 @@ wp_head(); /** we need this for plugins **/
 <script type="text/javascript" src="//use.typekit.net/eth8fjq.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <script type="text/javascript">
     $(window).load(function() {
         // The slider being synced must be initialized first
